@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cat Clicker</title>
+</head>
+<body>
+<h2>Select your Cat</h2>
+<ul data-bind="foreach: catList">
+    <li data-bind="text: name, click: $parent.setCat"></li>
+</ul>
+<!--    <ul id="cat-list"></ul> -->
+    <div id="cat" data-bind="with:currentCat">
+
+        <h2 data-bind="text: name"></h2>
+        <h3 data-bind="text: title"></h3>
+        <h4>Click the Cat !</h4>
+        <div data-bind="text: clickCount"></div>
+        <img src="" alt="cute cat" data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}" onclick="play()">
+        <audio id="audio" src="Mario-coin-sound.mp3" ></audio>
+<!-- coz when we click we need incrementCounter to run. Also we are using multiple binding here.
+binding an attribute(src) inside knockout with attr to an object literal named imgSrc(in app.js)-->
+   
+    <div>
+    <h3>Nicknames:</h3>
+    <ul data-bind="foreach: nicknames"><li data-bind="text: $data"></li></ul></div></div>
+    <script type="text/javascript">
+        function play(){
+       var audio = document.getElementById("audio");
+       audio.play();
+                 }
+    </script>
+    <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="js/app1.js"></script>
+</body>
+</html>
+<!-- data bindings are the things that are connecting up the view and the model,and 
+Knockout or ko handles the view to model and model to view synchronisation for us -->
